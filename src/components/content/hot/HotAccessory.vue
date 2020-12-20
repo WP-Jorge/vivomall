@@ -5,7 +5,9 @@
 		</div>
 		<div class="hot_accessory_container">
 			<div class="hot_accessory_goods" v-for="accessory in goods" :key="accessory.goodsId">
-				<router-link :to="{path: '/goodsDes', query: {goodsId: accessory.goodsId}}"><GoodsItem :lazy="true" shadow="hover" :goods="accessory"></GoodsItem></router-link>
+				<router-link :to="{path: '/goodsDes', query: {goodsId: accessory.goodsId}}">
+					<GoodsItem :lazy="true" shadow="hover" :goods="accessory"></GoodsItem>
+				</router-link>
 			</div>
 		</div>
 	</div>
@@ -29,12 +31,12 @@
 			}
 		},
 		mounted() {
-			this.getHotAccessory();
+			this.getHotAccessory()
 		},
 		methods: {
 			getHotAccessory() {
 				getHotAccessory().then(res => {
-					this.goods = res.data;
+					this.goods = res.data
 				})
 			}
 		}

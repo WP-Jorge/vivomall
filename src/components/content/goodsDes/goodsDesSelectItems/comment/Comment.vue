@@ -30,20 +30,9 @@
 			comment: {
 				type: Object,
 				default () {
-					return {};
+					return {}
 				}
 			}
-		},
-		data() {
-			return {
-
-			}
-		},
-		mounted() {
-			console.log(this.comment);
-		},
-		methods: {
-
 		}
 	}
 </script>

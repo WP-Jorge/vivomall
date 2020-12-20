@@ -16,13 +16,8 @@
 	import Recommend from 'components/content/recommend/Recommend.vue'
 	import HotPhone from 'components/content/hot/HotPhone.vue'
 	import HotAccessory from 'components/content/hot/HotAccessory.vue'
-	
+
 	export default {
-		data() {
-			return {
-				
-			}
-		},
 		components: {
 			Carousel,
 			Sort,
@@ -35,6 +30,7 @@
 
 <style lang="scss" scoped>
 	@import 'assets/sass/base.scss';
+
 	.home {
 		.home_goods {
 			width: 1200px;

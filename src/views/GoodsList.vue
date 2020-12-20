@@ -3,24 +3,27 @@
 		<TitleBar :title="$route.query.style"></TitleBar>
 		<div class="goods_container">
 			<div class="goods" v-for="goods in goodsList" :key="goods.goodsId">
-				<router-link :to="{path: '/goodsDes', query: {goodsId: goods.goodsId}}"><GoodsItem :goods="goods" shadow="hover" :lazy="true"></GoodsItem></router-link>
+				<router-link :to="{path: '/goodsDes', query: {goodsId: goods.goodsId}}">
+					<GoodsItem :goods="goods" shadow="hover" :lazy="true"></GoodsItem>
+				</router-link>
 			</div>
 		</div>
 		<div class="page">
-			<el-pagination background layout="prev, pager, next" :page-count="totalPage" @current-change="pageClick" hide-on-single-page @prev-click="prePage" @next-click="nextPage"></el-pagination>
+			<el-pagination background layout="prev, pager, next" :page-count="totalPage" @current-change="pageClick"
+			hide-on-single-page @prev-click="prePage" @next-click="nextPage"></el-pagination>
 		</div>
 	</div>
 </template>
 
 <script>
-	import { 
+	import {
 		getGoodsByPath,
 		getGoodsBySearch
 	} from 'network/goodsList.js'
-	
+
 	import TitleBar from 'components/content/titleBar/TitleBar.vue'
 	import GoodsItem from 'components/common/goodsItem/GoodsItem.vue'
-	
+
 	export default {
 		components: {
 			TitleBar,
@@ -36,7 +39,7 @@
 			}
 		},
 		beforeMount() {
-			this.getGoods();
+			this.getGoods()
 		},
 		methods: {
 			getGoods() {
@@ -67,22 +70,22 @@
 				}
 			},
 			pageClick(pageNum) {
-				this.pageNum = pageNum;
-				this.getGoods();
+				this.pageNum = pageNum
+				this.getGoods()
 			},
 			prePage() {
-				this.pageNum--;
+				this.pageNum--
 			},
 			nextPage() {
-				this.pageNum++;
+				this.pageNum++
 			}
 		},
 		watch: {
 			$route() {
-				this.getGoods();
+				this.getGoods()
 			},
 			nowPage() {
-				this.getGoods();
+				this.getGoods()
 			}
 		}
 	}
@@ -93,7 +96,7 @@
 		margin: 0 auto;
 		margin-top: 30px;
 		width: 1200px;
-		
+
 		.page {
 			text-align: center;
 			width: 450px;
@@ -101,20 +104,20 @@
 			margin-bottom: 40px;
 			margin-left: auto;
 		}
-		
+
 		.goods_container {
 			display: flex;
 			flex-wrap: wrap;
-			// justify-content: space-around;
+			min-height: 450px;
 			justify-content: flex-start;
-			
+
 			.goods {
 				margin: 10px 9px 10px 0;
 			}
-			.goods:nth-child(4n){
+
+			.goods:nth-child(4n) {
 				margin-right: 0;
 			}
 		}
 	}
-	
 </style>

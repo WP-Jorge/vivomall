@@ -5,8 +5,10 @@
 </template>
 
 <script>
-	import { getDesImgByGoodsId } from 'network/goodsDes/goodsDesDes.js'
-	
+	import {
+		getDesImgByGoodsId
+	} from 'network/goodsDes/goodsDesDes.js'
+
 	export default {
 		data() {
 			return {
@@ -15,12 +17,12 @@
 			}
 		},
 		mounted() {
-			this.getDesImgByGoodsId();
+			this.getDesImgByGoodsId()
 		},
 		methods: {
 			getDesImgByGoodsId() {
 				getDesImgByGoodsId(this.goodsId).then(res => {
-					this.des = res.data[0];
+					this.des = res.data[0]
 				})
 			}
 		}
@@ -30,7 +32,7 @@
 <style lang="scss" scoped>
 	.goods_des_des {
 		min-height: 600px;
-		
+
 		.el-image {
 			min-width: 1200px;
 		}

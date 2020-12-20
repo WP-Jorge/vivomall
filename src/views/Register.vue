@@ -12,7 +12,7 @@
 	import {
 		getRegisterImg
 	} from 'network/register.js'
-	
+
 	import RegisterForm from 'components/content/registerForm/RegisterForm.vue'
 
 	export default {
@@ -30,7 +30,7 @@
 		methods: {
 			getRegisterImg() {
 				getRegisterImg().then(res => {
-					this.registerImg = res.data.loginImg;
+					this.registerImg = res.data.loginImg
 				})
 			}
 		}
@@ -41,12 +41,12 @@
 	.register {
 		height: 780px;
 		background-color: #e1ecfe;
-		
+
 		.register_container {
 			margin: 0 auto;
 			height: 780px;
 			width: 1200px;
-			
+
 			.form {
 				float: right;
 				margin-top: 40px;

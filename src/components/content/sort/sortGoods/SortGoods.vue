@@ -2,8 +2,8 @@
 	<div class="sort_goods" @mouseleave="hiddenGoods">
 		<div class="goods">
 			<router-link :to="{path: '/goodsDes', query: {goodsId: goods.goodsId}}" v-for="goods in showGoods" :key="goods.goodsId">
-				<GoodsSimpleItem class="simpGoods" src="javascript:void(0);" >
-					<el-image slot="img" :src="goods.goodsImg" alt="图片"/>
+				<GoodsSimpleItem class="simpGoods" src="javascript:void(0);">
+					<el-image slot="img" :src="goods.goodsImg" alt="图片" />
 					<p slot="imgName">{{ goods.goodsName }}</p>
 				</GoodsSimpleItem>
 			</router-link>
@@ -12,10 +12,12 @@
 </template>
 
 <script>
-	import { getGoodsBySortId } from 'network/sortGoods.js'
-	
+	import {
+		getGoodsBySortId
+	} from 'network/sortGoods.js'
+
 	import GoodsSimpleItem from 'components/common/goodsSimpleItem/GoodsSimpleItem.vue'
-	
+
 	export default {
 		props: {
 			sortId: {
@@ -38,14 +40,13 @@
 			getGoodsBySortId() {
 				console.log(this.sortId);
 				getGoodsBySortId(this.sortId).then(res => {
-					this.showGoods = res.data;
-					console.log(res.data);
+					this.showGoods = res.data
 				})
 			},
 			hiddenGoods(e) {
 				try {
 					if (e.toElement.className === 'sort' || e.toElement.className === 'el-image__inner') {
-						this.$emit('hiddenGoods');
+						this.$emit('hiddenGoods')
 					}
 				} catch (e) {
 					if (e) {
@@ -66,12 +67,10 @@
 
 <style lang="scss" scoped>
 	.sort_goods {
-		// margin-left: 20px;
 		height: 482px;
 		width: 786px;
 		background-color: #fff;
-		// margin: 10px;
-		
+
 		.goods {
 			display: flex;
 			flex-wrap: wrap;
@@ -80,15 +79,15 @@
 			width: 786px;
 			height: 100%;
 			padding: 10px;
-			
+
 			.simpGoods {
 				display: flex;
 				justify-content: space-around;
-				
+
 				.el-image {
 					width: 20%;
 				}
-				
+
 				font-size: 14px;
 			}
 		}

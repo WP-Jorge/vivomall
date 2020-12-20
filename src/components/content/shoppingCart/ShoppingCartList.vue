@@ -22,7 +22,8 @@
 			</el-table-column>
 			<el-table-column label="数量" width="173px" header-align="center" align="center">
 				<template slot-scope="scop">
-					<el-input-number step-strictly :step="1" v-model="scop.row.num" @change="handleChange(scop.row.num, scop.row)" :min="1" :max="10" label="描述文字"></el-input-number>
+					<el-input-number step-strictly :step="1" v-model="scop.row.num" @change="handleChange(scop.row.num, scop.row)"
+					:min="1" :max="10" label="描述文字"></el-input-number>
 				</template>
 			</el-table-column>
 			<el-table-column label="优惠" width="173px" header-align="center" align="center">
@@ -141,8 +142,8 @@
 							})
 						}
 					}
-				}).catch(() => {});
-				
+				}).catch(() => {})
+
 			},
 			handleSelectionChange(val) {
 				this.multipleSelection = val;
@@ -158,18 +159,14 @@
 					if (this.username) {
 						let orderList = this.multipleSelection
 						localStorage.setItem('orderList', JSON.stringify(orderList))
-						this.$router.push({
-							path: '/order'
-						})
+						this.$router.replace('/order')
 					} else {
 						this.$message({
 							message: '您当前未登录，正在跳转至登陆页面',
 							type: 'warning',
 							center: true
 						})
-						this.$router.push({
-							path: '/login'
-						})
+						this.$router.push('/login')
 					}
 				}
 			}
@@ -204,6 +201,9 @@
 </script>
 
 <style lang="scss">
+	.el-table__body-wrapper {
+		padding-bottom: 10px
+	}
 	.el-table__body {
 		width: 1000px;
 		margin: 0 auto;

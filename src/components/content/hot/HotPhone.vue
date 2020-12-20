@@ -5,10 +5,14 @@
 		</div>
 		<div class="hot_phone_container">
 			<el-card class="first_goods" shadow="hover" :lazy="true">
-				<router-link :to="{path: '/goodsDes', query: {goodsId: firstGoods.goodsId}}"><el-image :src="firstGoods.firstGoodsImg" alt="图片"/></router-link>
+				<router-link :to="{path: '/goodsDes', query: {goodsId: firstGoods.goodsId}}">
+					<el-image :src="firstGoods.firstGoodsImg" alt="图片" />
+				</router-link>
 			</el-card>
 			<div class="hot_phone_goods" v-for="phone in goods" :key="phone.goodsId">
-				<router-link :to="{path: '/goodsDes', query: {goodsId: phone.goodsId}}"><GoodsItem :lazy="true" shadow="hover" :goods="phone"></GoodsItem></router-link>
+				<router-link :to="{path: '/goodsDes', query: {goodsId: phone.goodsId}}">
+					<GoodsItem :lazy="true" shadow="hover" :goods="phone"></GoodsItem>
+				</router-link>
 			</div>
 		</div>
 	</div>
@@ -34,18 +38,18 @@
 			}
 		},
 		mounted() {
-			this.getHotPhone();
-			this.getFrstGoods();
+			this.getHotPhone()
+			this.getFrstGoods()
 		},
 		methods: {
 			getHotPhone() {
 				getHotPhone().then(res => {
-					this.goods = res.data;
+					this.goods = res.data
 				})
 			},
 			getFrstGoods() {
 				getFrstGoods().then(res => {
-					this.firstGoods = res.data;
+					this.firstGoods = res.data
 				})
 			}
 		}
@@ -76,7 +80,7 @@
 				width: 100%;
 				height: 100%;
 			}
-			
+
 			.el-card__body {
 				padding: 0;
 				height: 100%;

@@ -45,7 +45,7 @@
 								center: true,
 								type: 'success'
 							});
-							this.$router.push('/login').catch(err => err);
+							this.$router.push('/login').catch(err => err)
 						} else {
 							this.$message({
 								message: res.data.msg,
@@ -83,7 +83,7 @@
 				}
 			},
 			toLogin() {
-				this.$router.push('/login').catch(err => err);
+				this.$router.push('/login').catch(err => err)
 			}
 		}
 	}

@@ -18,7 +18,7 @@
 
 <script>
 	import SortGoods from 'components/content/sort/sortGoods/SortGoods.vue'
-	
+
 	import {
 		getAllSorts
 	} from 'network/sort.js'
@@ -32,54 +32,54 @@
 				sorts: [],
 				sortId: null,
 				isSortGoodsShow: false,
-				timer: null,
+				timer: null
 			}
 		},
 		mounted() {
-			this.getAllSorts();
+			this.getAllSorts()
 		},
 		methods: {
 			getAllSorts() {
 				getAllSorts().then(res => {
-					this.sorts = res.data;
+					this.sorts = res.data
 				})
 			},
 			saveSortId(sortId) {
-				this.sortId = sortId;
+				this.sortId = sortId
 			},
 			hiddenGoods(e) {
 				try {
 					if (e.toElement.className === 'sort' || e.toElement.className !== 'temp') {
-						this.isSortGoodsShow = false;
+						this.isSortGoodsShow = false
 					}
 				} catch (e) {
 					if (e) {
-						console.log();
+						console.log()
 					}
 				}
 			},
 			showGoods() {
-				this.isSortGoodsShow = true;
+				this.isSortGoodsShow = true
 			}
-		},
+		}
 	}
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 	@import 'assets/sass/base.scss';
-	
+
 	.sort {
 		float: left;
 		display: flex;
 		align-items: center;
 		height: 522px;
 		z-index: 2;
-		
+
 		.temp {
 			height: 482px;
 			width: 20px;
 		}
-		
+
 		.sort_container {
 			display: flex;
 			align-items: center;
@@ -87,16 +87,16 @@
 			height: 482px;
 			width: 200px;
 			background: hsla(0, 0, 100%, .65);
-			
+
 			ul {
 				display: flex;
 				align-items: center;
 				flex-wrap: wrap;
-				
+
 				li:hover {
 					background-color: #fff;
 				}
-				
+
 				li {
 					display: flex;
 					align-items: center;
@@ -104,12 +104,12 @@
 					width: 200px;
 					height: 60px;
 					box-sizing: border-box;
-					
+
 					a {
 						height: 100%;
 						width: 100%;
 						line-height: 60px;
-						
+
 						span {
 							display: inline-block;
 							float: right;

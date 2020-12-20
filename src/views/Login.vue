@@ -12,7 +12,7 @@
 	import {
 		getLoginImg
 	} from 'network/login.js'
-	
+
 	import LoginForm from 'components/content/LoginForm/LoginForm.vue'
 
 	export default {
@@ -30,7 +30,7 @@
 		methods: {
 			getLoginImg() {
 				getLoginImg().then(res => {
-					this.loginImg = res.data.loginImg;
+					this.loginImg = res.data.loginImg
 				})
 			}
 		}
@@ -41,12 +41,12 @@
 	.login {
 		height: 780px;
 		background-color: #e1ecfe;
-		
+
 		.login_container {
 			margin: 0 auto;
 			height: 780px;
 			width: 1200px;
-			
+
 			.form {
 				float: right;
 				margin-top: 40px;

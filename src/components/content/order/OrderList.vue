@@ -18,7 +18,6 @@
 			</el-table-column>
 			<el-table-column label="数量" width="185px" header-align="center" align="center">
 				<template slot-scope="scop">
-					<!-- <el-input-number v-model="scop.row.num" @change="handleChange(scop.row.num, scop.row)" :min="1" :max="10" label="描述文字"></el-input-number> -->
 					{{ scop.row.num }}
 				</template>
 			</el-table-column>
@@ -35,19 +34,19 @@
 				<p class="info">（商品总价：￥{{ totalPrice }} 优惠：￥{{ totalDiscount }}）</p>
 			</div>
 			<div class="pay">
-				<el-button type="danger" round>提交订单</el-button>
+				<el-button type="danger" round @click="submitOrder">提交订单</el-button>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	
 	export default {
 		data() {
 			return {
 				tableData: [],
-				address: {}
+				address: {},
+				timer: null
 			}
 		},
 		mounted() {
@@ -57,6 +56,9 @@
 			getOrderList() {
 				this.tableData = JSON.parse(localStorage.getItem('orderList'))
 			},
+			submitOrder() {
+				this.$router.replace('/pay')
+			}
 		},
 		computed: {
 			totlalFinalPrice() {
@@ -89,6 +91,7 @@
 		width: 1000px;
 		margin: 0 auto;
 	}
+
 	.el-table__header {
 		margin: 0 auto;
 	}

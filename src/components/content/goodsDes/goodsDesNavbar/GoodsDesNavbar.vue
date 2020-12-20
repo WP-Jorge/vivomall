@@ -21,25 +21,25 @@
 		data() {
 			return {
 				navList: ['规格参数', '详细信息', '评价'],
-				clickIndex: 0,
+				clickIndex: 0
 			}
 		},
 		mounted() {
-			this.initClickIndex();
+			this.initClickIndex()
 		},
 		beforeRouteEnter() {
-			this.initClickIndex();
+			this.initClickIndex()
 		},
 		methods: {
 			initClickIndex() {
 				if (this.$route.path === '/goodsDes/des') {
-					this.clickIndex = 0;
+					this.clickIndex = 0
 				} else if (this.$route.path === '/goodsDes/imgs') {
-					this.clickIndex = 1;
+					this.clickIndex = 1
 				} else if (this.$route.path === '/goodsDes/comments') {
-					this.clickIndex = 2;
+					this.clickIndex = 2
 				} else {
-					this.clickIndex = 0;
+					this.clickIndex = 0
 				}
 			}
 		}
@@ -48,24 +48,26 @@
 
 <style lang="scss" scoped>
 	.active {
-		color: #000!important;
-		border-bottom:  1px solid #000;
+		color: #000 !important;
+		border-bottom: 1px solid #000;
 	}
-	
+
 	.goods_des_navbar {
 		border-top: 1px solid #e0e0e0;
 		background-color: #fafafa;
 		height: 80px;
+
 		.tabs {
 			ul {
 				display: flex;
 				width: 470px;
 				height: 80px;
+
 				li {
 					flex: 1;
 					text-align: center;
 					line-height: 80px;
-					
+
 					span {
 						color: #999;
 						padding: 10px;

@@ -15,8 +15,8 @@
 </script>
 
 <style lang="scss" scoped>
-	@import  'assets/sass/base.scss';
-	
+	@import 'assets/sass/base.scss';
+
 	.footer {
 		position: absolute;
 		width: 100%;
@@ -26,6 +26,7 @@
 		right: 0;
 		text-align: center;
 		background: #333;
+
 		font {
 			line-height: 50px;
 			color: $gray_color;

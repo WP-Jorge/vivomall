@@ -1,9 +1,11 @@
 <template>
 	<div id="app">
-		<Header/>
-		<Navbar/>
-		<router-view v-if="isRouterAlive"/>
-		<Footer/>
+		<Header />
+		<Navbar />
+		<transition mode="out-in" appear>
+			<router-view v-if="isRouterAlive" />
+		</transition>
+		<Footer />
 	</div>
 </template>
 
@@ -11,12 +13,12 @@
 	import Header from 'components/content/header/Header.vue'
 	import Navbar from 'components/content/navbar/Navbar.vue'
 	import Footer from 'components/content/footer/Footer.vue'
-	
+
 	export default {
 		components: {
 			Header,
 			Navbar,
-			Footer,
+			Footer
 		},
 		data() {
 			return {

@@ -12,6 +12,7 @@
 				<ul>
 					<li v-for="(style, index) in styles" :key="index">
 						<router-link :to="{path: $store.state.routers[index], query: {style: style.styleName}}">{{ style.styleName }}</router-link>
+						<!-- <a href="javascript:void(0)" @click="$router.push({path: $store.state.routers[index], query: {style: style.styleName}}), reload()">{{ style.styleName }}</a> -->
 					</li>
 				</ul>
 			</el-col>
@@ -47,9 +48,10 @@
 			}
 		},
 		created() {
-			this.getLogoImg();
-			this.getAllStyles();
-			this.getAllGoods();
+			this.reload()
+			this.getLogoImg()
+			this.getAllStyles()
+			this.getAllGoods()
 		},
 		methods: {
 			getLogoImg() {
@@ -59,23 +61,23 @@
 			},
 			getAllStyles() {
 				getAllStyles().then(res => {
-					this.styles = res.data;
+					this.styles = res.data
 				})
 			},
 			getAllGoods() {
 				getAllGoods().then(res => {
-					this.goods = res.data;
+					this.goods = res.data
 				})
 			},
 			querySearch(queryString, callback) {
-				var goods = this.goods;
-				var results = queryString ? goods.filter(this.createFilter(queryString)) : goods;
-				callback(results);
+				var goods = this.goods
+				var results = queryString ? goods.filter(this.createFilter(queryString)) : goods
+				callback(results)
 			},
 			createFilter(queryString) {
 				return (goods) => {
-					return (goods.goodsName.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
-				};
+					return (goods.goodsName.toLowerCase().indexOf(queryString.toLowerCase()) !== -1)
+				}
 			},
 			handleSelect(item) {
 				if (this.$route.query.goodsId != item.goodsId) {
@@ -84,8 +86,8 @@
 						query: {
 							goodsId: item.goodsId
 						}
-					});
-					this.reload();
+					}).catch(err => err)
+					this.reload()
 				}
 			},
 			search() {
@@ -96,7 +98,7 @@
 							style: '商品搜索',
 							keyword: null
 						}
-					}).catch(err => err);
+					}).catch(err => err)
 				} else {
 					this.$router.push({
 						path: '/goodsList/search',
@@ -104,8 +106,9 @@
 							style: '商品搜索',
 							keyword: this.keyword
 						}
-					}).catch(err => err);
+					}).catch(err => err)
 				}
+				this.reload()
 			}
 		},
 	}
@@ -114,7 +117,6 @@
 <style lang="scss">
 	@import 'assets/sass/base.scss';
 
-	// 提示框模板样式
 	.my-autocomplete {
 		li {
 			line-height: normal;

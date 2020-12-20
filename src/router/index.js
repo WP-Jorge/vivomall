@@ -10,13 +10,21 @@ const GoodsDes = () => import('views/GoodsDes')
 const ShoppingCart = () => import('views/ShoppingCart')
 const Order = () => import('views/Order')
 const Pay = () => import('views/Pay')
+const Finish = () => import('views/Finished')
+const NotFound = () => import('views/NotFound')
 
 const GoodsDesDes = () => import('components/content/goodsDes/goodsDesSelectItems/GoodsDesDes')
 const GoodsDesImgs = () => import('components/content/goodsDes/goodsDesSelectItems/GoodsDesImgs')
 const GoodsDesComments = () => import('components/content/goodsDes/goodsDesSelectItems/GoodsDesComments')
 
-const routes = [
-	{
+// 解决高版本router跳转报错问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location, onResolve, onReject) {
+	if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+	return originalPush.call(this, location).catch(err => err)
+}
+
+const routes = [{
 		path: '',
 		redirect: '/home'
 	},
@@ -49,11 +57,14 @@ const routes = [
 		component: Pay
 	},
 	{
+		path: '/finished',
+		component: Finish
+	},
+	{
 		path: '/goodsDes',
 		component: GoodsDes,
 		redirect: '/goodsDes/des',
-		children: [
-			{
+		children: [{
 				path: 'des',
 				component: GoodsDesDes
 			},
@@ -66,11 +77,26 @@ const routes = [
 				component: GoodsDesComments
 			}
 		]
+	},
+	{
+		path: '/*',
+		component: NotFound
 	}
 ]
 
 const router = new VueRouter({
-  routes
+	routes
+})
+
+router.beforeEach((to, from, next) => {
+	// console.log(from)
+	if ((to.path === '/order' && (from.path !== '/shoppingCart') && (from.query.status)) || (to.path === '/pay' && from.path !== '/order') || (to
+			.path === '/finished' && from.path !== '/pay')) {
+		alert('您无权访问该页面！')
+		next('/home')
+	} else {
+		next()
+	}
 })
 
 export default router

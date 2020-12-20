@@ -8,7 +8,9 @@
 </template>
 
 <script>
-	import { getCommentByGoodsId } from 'network/goodsDes/comment/comment.js'
+	import {
+		getCommentByGoodsId
+	} from 'network/goodsDes/comment/comment.js'
 	import Comment from 'components/content/goodsDes/goodsDesSelectItems/comment/Comment.vue'
 	export default {
 		components: {
@@ -21,7 +23,7 @@
 			}
 		},
 		mounted() {
-			this.getCommentByGoodsId();
+			this.getCommentByGoodsId()
 		},
 		methods: {
 			getCommentByGoodsId() {
@@ -33,7 +35,7 @@
 							center: true
 						})
 					}
-					this.commentList = res.data;
+					this.commentList = res.data
 				})
 			}
 		}
@@ -43,7 +45,7 @@
 <style lang="scss" scoped>
 	.goods_des_imgs {
 		min-height: 600px;
-		
+
 		.comment_title {
 			height: 30px;
 			text-align: center;
@@ -54,7 +56,7 @@
 			line-height: 30px;
 			background-color: #FFF;
 		}
-		
+
 		.goods_des_imgs_container {
 			width: 1200px;
 			margin: 0 auto;

@@ -14,12 +14,7 @@
 		props: {
 			src: {
 				type: String,
-				default: '#'
-			}
-		},
-		data() {
-			return {
-				
+				default: 'javascript:void(0)'
 			}
 		}
 	}
@@ -30,18 +25,20 @@
 		display: flex;
 		margin: 5px;
 	}
+
 	.box-card {
 		display: flex;
 		width: 350px;
-		
+
 		a {
 			display: flex;
 			align-items: center;
+
 			.el-image {
 				display: inline-block;
 				width: 25%;
 			}
-			
+
 			p {
 				display: inline-block;
 				font-size: 12px;

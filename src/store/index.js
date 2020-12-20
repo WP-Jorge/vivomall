@@ -14,16 +14,14 @@ export default new Vuex.Store({
 	},
 	mutations: {
 		setUser(state, user) {
-			state.user = user;
-			localStorage.setItem('user', JSON.stringify(user));
+			state.user = user
+			localStorage.setItem('user', JSON.stringify(user))
 		},
 		delUser(state) {
-			state.user = null;
+			state.user = null
 		},
 		pushGoods(state, goods) {
-			state.shppingCart.push(goods);
+			state.shppingCart.push(goods)
 		}
-	},
-	actions: {},
-	modules: {}
+	}
 })

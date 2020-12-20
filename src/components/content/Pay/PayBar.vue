@@ -2,14 +2,14 @@
 	<div class="pay_bar">
 		<h3>支付平台</h3>
 		<div class="pay_options">
-			<!-- div. --> 
-			<div class="pay_item"  v-for="item in payOptionList" :key="item.id" @click="dialogFormVisible = true">
+			<!-- div. -->
+			<div class="pay_item" v-for="item in payOptionList" :key="item.id" @click="dialogFormVisible = true, clickOption = item">
 				<PayItem :option="item"></PayItem>
 			</div>
 		</div>
-		<el-dialog title="输入支付密码" type="" :visible.sync="dialogFormVisible">
+		<el-dialog :title="'输入支付密码（' + clickOption.text +'）'" type="" :visible.sync="dialogFormVisible">
 			<el-form>
-				<el-input placeholder="请输入您的支付密码" v-model="inputPassword" show-password></el-input>
+				<el-input placeholder="请输入您的支付密码" v-model="inputPassword" show-password @keyup.enter.native="submit"></el-input>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
 				<el-button @click="cancel">取 消</el-button>
@@ -22,7 +22,11 @@
 <script>
 	import {
 		getAllPayOptions
-	} from 'network/payOption.js'
+	} from 'network/pay.js'
+	import {
+		deleteShoppingCartByGoodsNameAndUsername
+	} from 'network/pay.js'
+
 	import PayItem from 'components/common/payItem/PayItem.vue'
 	export default {
 		components: {
@@ -32,7 +36,8 @@
 			return {
 				payOptionList: [],
 				dialogFormVisible: false,
-				inputPassword: ''
+				inputPassword: '',
+				clickOption: {}
 			}
 		},
 		mounted() {
@@ -65,12 +70,18 @@
 			},
 			submit() {
 				if (this.passwordCheck()) {
-					this.$message({
-						message: '支付成功！',
-						type: 'success',
-						center: true
+					const loading = this.$loading({
+						lock: true,
+						text: '支付中...',
+						spinner: 'el-icon-loading',
+						background: 'rgba(255, 255, 255, 0.5)'
 					})
-					this.dialogFormVisible = false
+					setTimeout(() => {
+						this.delShoppingCart()
+						this.dialogFormVisible = false
+						loading.close();
+						this.$router.replace('/finished')
+					}, 1000)
 				}
 			},
 			cancel() {
@@ -80,6 +91,27 @@
 					type: 'warning',
 					center: true
 				})
+			},
+			deleteGoods(goods) {
+				deleteShoppingCartByGoodsNameAndUsername(goods.totalName, goods.username).then(res => res)
+			},
+			delShoppingCart() {
+				let orderList = JSON.parse(localStorage.getItem('orderList'))
+				if (orderList) {
+					this.count = orderList.length
+					if (this.timer) {
+						clearInterval(this.timer)
+					}
+					this.timer = setInterval(() => {
+						if (this.count > 0) {
+							this.count--
+							this.deleteGoods(orderList[this.count])
+						} else {
+							localStorage.removeItem('orderList')
+							clearInterval(this.timer)
+						}
+					}, 100)
+				}
 			}
 		},
 		computed: {
@@ -91,7 +123,20 @@
 </script>
 
 <style lang="scss">
+	.el-loading-spinner {
+		top: 34%;
+
+		.el-loading-text {
+			font-size: 16px;
+		}
+	}
+
+	.el-icon-loading:before {
+		font-size: 40px;
+	}
+
 	.pay_bar {
+		margin: 20px 0;
 		padding: 36px;
 		height: 150px;
 		background-color: #FFFFFF;
@@ -104,7 +149,7 @@
 			}
 		}
 	}
-	
+
 	.el-dialog {
 		// min-width: 400px;
 		width: 400px;

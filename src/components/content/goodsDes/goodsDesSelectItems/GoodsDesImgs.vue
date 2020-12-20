@@ -5,7 +5,9 @@
 </template>
 
 <script>
-	import { getDesImgByGoodsId } from 'network/goodsDes/goodsDesImgs.js'
+	import {
+		getDesImgByGoodsId
+	} from 'network/goodsDes/goodsDesImgs.js'
 	export default {
 		data() {
 			return {
@@ -14,12 +16,12 @@
 			}
 		},
 		mounted() {
-			this.getDesImgByGoodsId();
+			this.getDesImgByGoodsId()
 		},
 		methods: {
 			getDesImgByGoodsId() {
 				getDesImgByGoodsId(this.goodsId).then(res => {
-					this.imgList = res.data.slice(1);
+					this.imgList = res.data.slice(1)
 				})
 			}
 		}

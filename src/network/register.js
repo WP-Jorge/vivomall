@@ -1,4 +1,6 @@
-import { request } from 'network/request.js'
+import {
+	request
+} from 'network/request.js'
 
 export function getRegisterImg() {
 	return request({

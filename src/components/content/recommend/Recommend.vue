@@ -21,7 +21,7 @@
 			GoodsItem
 		},
 		mounted() {
-			this.getGoodsByGoodIds();
+			this.getGoodsByGoodIds()
 		},
 		data() {
 			return {
@@ -32,7 +32,7 @@
 		methods: {
 			getGoodsByGoodIds() {
 				getGoodsByGoodIds().then(res => {
-					this.goodsList = res.data;
+					this.goodsList = res.data
 				})
 			}
 		}

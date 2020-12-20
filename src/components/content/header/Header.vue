@@ -2,18 +2,22 @@
 	<div class="header">
 		<el-row>
 			<el-col :span="8" class="left_text">
-				<el-col v-for="(text, index) in texts" :key="index"><a href="#">{{ text }}</a></el-col>
+				<el-col v-for="(text, index) in texts" :key="index"><a href="javascript:viod(0)">{{ text }}</a></el-col>
 			</el-col>
 			<el-col :span="9" class="center_text"></el-col>
 			<el-col :span="7" class="right_text">
 				<el-col class="car">
-					<el-col><router-link to="/shoppingCart">购物车</router-link></el-col>
+					<el-col>
+						<router-link to="/shoppingCart">购物车</router-link>
+					</el-col>
 				</el-col>
 				<el-col v-if="$store.state.user === null" class="no_login">
 					<el-col>
 						<router-link to="/login">登录</router-link>
 					</el-col>
-					<el-col><router-link to="/register">注册</router-link></el-col>
+					<el-col>
+						<router-link to="/register">注册</router-link>
+					</el-col>
 				</el-col>
 				<el-col v-else class="login">
 					<el-col class="welcom"><a href="javascript:void(0);">欢迎：{{ $store.state.user.username }}</a></el-col>
@@ -28,7 +32,7 @@
 	export default {
 		data() {
 			return {
-				texts: ['品牌', 'OriginOS', '体验店', '企业业务', '社区'],
+				texts: ['品牌', 'OriginOS', '体验店', '企业业务', '社区']
 			}
 		},
 		methods: {
@@ -39,10 +43,15 @@
 					type: 'warning',
 					center: true
 				});
-				localStorage.clear();
+				localStorage.clear()
 				if (this.$route.path === '/shoppingCart') {
 					location.reload()
 				}
+			}
+		},
+		computed: {
+			username() {
+				return this.$store.state.user ? this.$store.state.user.username : null
 			}
 		}
 	}
@@ -85,12 +94,12 @@
 				text-align: right;
 				padding-right: 10px;
 			}
-			
+
 			.no_login,
 			.login {
 				display: flex;
 				flex: 2;
-				
+
 				.welcom {
 					min-width: 100px;
 				}

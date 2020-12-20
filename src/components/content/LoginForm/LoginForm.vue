@@ -37,7 +37,7 @@
 		},
 		methods: {
 			toRegister() {
-				this.$router.push('/register').catch(err => err);
+				this.$router.push('/register').catch(err => err)
 			},
 			login() {
 				if (this.loginCheck()) {
@@ -49,10 +49,10 @@
 								center: true,
 								type: 'success'
 							});
-							this.$store.commit('setUser', this.user);
+							this.$store.commit('setUser', this.user)
 							console.log();
 							this.addShoppingCart()
-							this.$router.push('/home').catch(err => err);
+							this.$router.push('/home').catch(err => err)
 						} else {
 							this.$message({
 								message: res.data.msg,
@@ -77,9 +77,9 @@
 						center: true,
 						type: 'error'
 					});
-					return false;
+					return false
 				} else {
-					return true;
+					return true
 				}
 			},
 			addShoppingCart() {
@@ -100,11 +100,6 @@
 						}
 					}, 100)
 				}
-				
-				// goodsList.forEach(item => {
-				// 	item.username = this.user.username
-				// 	addShoppingCart(item)
-				// })
 			}
 		}
 	}

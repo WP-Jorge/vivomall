@@ -1,24 +1,23 @@
 <template>
-	<div class="shopping_cart">
-		<TitleBar title="我的购物车"></TitleBar>
-		<ShoppingCartList></ShoppingCartList>
+	<div class="finished">
+		<TitleBar title="支付状态"></TitleBar>
+		<FinishedInfo></FinishedInfo>
 	</div>
 </template>
 
 <script>
 	import TitleBar from 'components/content/titleBar/TitleBar.vue'
-	import ShoppingCartList from 'components/content/shoppingCart/ShoppingCartList.vue'
-
+	import FinishedInfo from 'components/content/finished/FinishedInfo.vue'
 	export default {
 		components: {
 			TitleBar,
-			ShoppingCartList
+			FinishedInfo
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.shopping_cart {
+	.finished {
 		width: 1200px;
 		margin: 0 auto;
 	}
