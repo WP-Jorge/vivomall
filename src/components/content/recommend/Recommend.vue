@@ -4,8 +4,8 @@
 			<span class="recommend_title">{{ title }}</span>
 		</div>
 		<div class="recommend_goods_container">
-			<div class="recommend_goods" v-for="goods in goodsList" :key="goods.goodId">
-				<a href="#"><GoodsItem :lazy="true" shadow="hover" :goods="goods" :isShowOldPrice="true"></GoodsItem></a>
+			<div class="recommend_goods" v-for="goods in goodsList" :key="goods.goodsId">
+				<router-link :to="{path: '/goodsDes', query: {goodsId: goods.goodsId}}"><GoodsItem :lazy="true" shadow="hover" :goods="goods" :isShowOldPrice="true"></GoodsItem></router-link>
 			</div>
 		</div>
 	</div>

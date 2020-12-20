@@ -2,9 +2,7 @@
 	<div id="app">
 		<Header/>
 		<Navbar/>
-		<router-view/>
-		<!-- <Home/> -->
-		<!-- <GoodList></GoodList> -->
+		<router-view v-if="isRouterAlive"/>
 		<Footer/>
 	</div>
 </template>
@@ -14,16 +12,29 @@
 	import Navbar from 'components/content/navbar/Navbar.vue'
 	import Footer from 'components/content/footer/Footer.vue'
 	
-	// import Home from 'views/Home.vue'
-	// import GoodList from 'views/GoodList.vue'
-		
 	export default {
 		components: {
 			Header,
 			Navbar,
 			Footer,
-			// Home,
-			// GoodList
+		},
+		data() {
+			return {
+				isRouterAlive: true
+			}
+		},
+		provide() {
+			return {
+				reload: this.reload
+			}
+		},
+		methods: {
+			reload() {
+				this.isRouterAlive = false
+				this.$nextTick(() => {
+					this.isRouterAlive = true
+				})
+			}
 		}
 	}
 </script>

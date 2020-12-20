@@ -5,10 +5,10 @@
 		</div>
 		<div class="hot_phone_container">
 			<el-card class="first_goods" shadow="hover" :lazy="true">
-				<a href="#"><el-image :src="firstGoods.firstGoodImg" alt="图片"/></a>
+				<router-link :to="{path: '/goodsDes', query: {goodsId: firstGoods.goodsId}}"><el-image :src="firstGoods.firstGoodsImg" alt="图片"/></router-link>
 			</el-card>
-			<div class="hot_phone_goods" v-for="phone in goods" :key="phone.goodId">
-				<a href="#"><GoodsItem :lazy="true" shadow="hover" :goods="phone"></GoodsItem></a>
+			<div class="hot_phone_goods" v-for="phone in goods" :key="phone.goodsId">
+				<router-link :to="{path: '/goodsDes', query: {goodsId: phone.goodsId}}"><GoodsItem :lazy="true" shadow="hover" :goods="phone"></GoodsItem></router-link>
 			</div>
 		</div>
 	</div>

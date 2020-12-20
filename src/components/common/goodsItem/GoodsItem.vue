@@ -2,10 +2,10 @@
 	<div class="goods_item" :style="{ 'height': height, 'width': width }">
 		<el-card :shadow="shadow">
 			<div class="des_box">
-				<el-image :lazy="lazy" :src="goods.goodImg" alt="图片"/>
-				<span class="title">{{ goods.goodName }}</span>
-				<p class="des">{{ goods.goodDes }}</p>
-				<p class="all_price"><span class="now_price">{{ goods.goodPrice }}</span> <del class="old_price" v-show="isShowOldPrice">{{ goods.goodOldPrice }}</del></p>
+				<el-image :lazy="lazy" :src="goods.goodsImg" alt="图片"/>
+				<span class="title">{{ goods.goodsName }}</span>
+				<p class="des">{{ goods.goodsDes }}</p>
+				<p class="all_price"><span class="now_price">{{ goods.goodsPrice }}</span> <del class="old_price" v-show="isShowOldPrice">{{ goods.goodsOldPrice }}</del></p>
 			</div>
 		</el-card>
 	</div>
@@ -69,6 +69,7 @@
 				.des {
 					padding: 15px 0;
 					font-size: 12px;
+					text-align: center;
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;

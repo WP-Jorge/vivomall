@@ -10,13 +10,16 @@
 			</el-col>
 			<el-col :span="14" class="styles">
 				<ul>
-					<li v-for="(style, index) in styles" :key="index"><router-link :to="{path: $store.state.routers[index], query: {style: style.styleName}}">{{ style.styleName }}</router-link></li>
+					<li v-for="(style, index) in styles" :key="index">
+						<router-link :to="{path: $store.state.routers[index], query: {style: style.styleName}}">{{ style.styleName }}</router-link>
+					</li>
 				</ul>
 			</el-col>
 			<el-col :span="6" class="search">
-				<el-autocomplete @keyup.enter.native="search" min="100" suffix-icon="el-icon-search" popper-class="my-autocomplete" v-model="keyword" :fetch-suggestions="querySearch" :placeholder="goods[0].goodSimpleName" @select="handleSelect">
+				<el-autocomplete @keyup.enter.native="search" min="100" suffix-icon="el-icon-search" popper-class="my-autocomplete"
+				v-model="keyword" :fetch-suggestions="querySearch" :placeholder="goods[0].goodsSimpleName" @select="handleSelect">
 					<template slot-scope="{ item }">
-						<div class="name">{{ item.goodName }}</div>
+						<div class="name">{{ item.goodsName }}</div>
 					</template>
 				</el-autocomplete>
 			</el-col>
@@ -32,11 +35,12 @@
 	} from 'network/navbar.js'
 
 	export default {
+		inject: ['reload'],
 		data() {
 			return {
 				LogoImg: '',
 				styles: [],
-				keyword: '',
+				keyword: null,
 				goods: [{
 					goodSimpleName: ''
 				}]
@@ -69,15 +73,39 @@
 				callback(results);
 			},
 			createFilter(queryString) {
-				return (good) => {
-					return (good.goodName.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+				return (goods) => {
+					return (goods.goodsName.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
 				};
 			},
 			handleSelect(item) {
-				console.log(item);
+				if (this.$route.query.goodsId != item.goodsId) {
+					this.$router.push({
+						path: '/goodsDes',
+						query: {
+							goodsId: item.goodsId
+						}
+					});
+					this.reload();
+				}
 			},
 			search() {
-				console.log(111);
+				if (this.keyword === '') {
+					this.$router.push({
+						path: '/goodsList/search',
+						query: {
+							style: '商品搜索',
+							keyword: null
+						}
+					}).catch(err => err);
+				} else {
+					this.$router.push({
+						path: '/goodsList/search',
+						query: {
+							style: '商品搜索',
+							keyword: this.keyword
+						}
+					}).catch(err => err);
+				}
 			}
 		},
 	}
@@ -85,7 +113,7 @@
 
 <style lang="scss">
 	@import 'assets/sass/base.scss';
-	
+
 	// 提示框模板样式
 	.my-autocomplete {
 		li {
@@ -142,6 +170,7 @@
 
 					li {
 						flex: 1;
+
 						a:hover {
 							color: #476fff;
 							transition: all 0.3s ease;

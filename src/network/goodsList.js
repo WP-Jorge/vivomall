@@ -17,3 +17,9 @@ export function getGoodsByPath(path, pageNum, pageSize) {
 		url: 'getGoodsByPath/' + path + '/' + pageNum + '/' + pageSize
 	})
 }
+
+export function getGoodsBySearch(keyword, pageNum, pageSize) {
+	return request({
+		url: 'getGoodsBySearch/' + keyword + '/' + pageNum + '/' + pageSize
+	})
+}

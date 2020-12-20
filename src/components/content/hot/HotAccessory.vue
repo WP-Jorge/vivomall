@@ -4,8 +4,8 @@
 			<span class="hot_accessory_title">{{ title }}</span>
 		</div>
 		<div class="hot_accessory_container">
-			<div class="hot_accessory_goods" v-for="accessory in goods" :key="accessory.goodId">
-				<a href="#"><GoodsItem :lazy="true" shadow="hover" :goods="accessory"></GoodsItem></a>
+			<div class="hot_accessory_goods" v-for="accessory in goods" :key="accessory.goodsId">
+				<router-link :to="{path: '/goodsDes', query: {goodsId: accessory.goodsId}}"><GoodsItem :lazy="true" shadow="hover" :goods="accessory"></GoodsItem></router-link>
 			</div>
 		</div>
 	</div>

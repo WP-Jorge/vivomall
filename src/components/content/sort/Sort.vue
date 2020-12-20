@@ -5,7 +5,7 @@
 				<div class="sort_list">
 					<ul>
 						<li v-for="sort in sorts" :key="sort.sortId" @mouseenter="saveSortId(sort.sortId), showGoods()" @mouseleave="hiddenGoods">
-							<router-link :to="{path: $store.state.routers[sort.sortId], query: {style: sort.sortName}}">{{ sort.sortName }} <span>></span></router-link>
+							<router-link :to="{path: $store.state.routers[sort.sortId], query: {style: sort.sortName}}">{{ sort.sortName }}<span>></span></router-link>
 						</li>
 					</ul>
 				</div>

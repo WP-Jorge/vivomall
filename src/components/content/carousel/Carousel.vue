@@ -2,7 +2,7 @@
 	<div class="carousel">
 		<el-carousel trigger="click" height="522px" :interval="5000" :autoplay="true" :initial-index="0" arrow="never">
 			<el-carousel-item v-for="item in carousels" :key="item.carouselId">
-				<a href="#"><el-image style="width: 100%; height: 100%" :src="item.carouselImg" fit="cover"></el-image></a>
+				<a href="javascript:void(0);"><el-image style="width: 100%; height: 100%" :src="item.carouselImg" fit="cover"></el-image></a>
 			</el-carousel-item>
 		</el-carousel>
 	</div>

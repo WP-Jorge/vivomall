@@ -1,10 +1,12 @@
 <template>
 	<div class="sort_goods" @mouseleave="hiddenGoods">
 		<div class="goods">
-			<GoodsSimpleItem class="simpGoods" src="javascript:void(0);" v-for="goods in showGoods" :key="goods.goodId">
-				<el-image slot="img" :src="goods.goodImg" alt="图片"/>
-				<p slot="imgName">{{ goods.goodName }}</p>
-			</GoodsSimpleItem>
+			<router-link :to="{path: '/goodsDes', query: {goodsId: goods.goodsId}}" v-for="goods in showGoods" :key="goods.goodsId">
+				<GoodsSimpleItem class="simpGoods" src="javascript:void(0);" >
+					<el-image slot="img" :src="goods.goodsImg" alt="图片"/>
+					<p slot="imgName">{{ goods.goodsName }}</p>
+				</GoodsSimpleItem>
+			</router-link>
 		</div>
 	</div>
 </template>
@@ -42,7 +44,7 @@
 			},
 			hiddenGoods(e) {
 				try {
-					if (e.toElement.className !== 'temp') {
+					if (e.toElement.className === 'sort' || e.toElement.className === 'el-image__inner') {
 						this.$emit('hiddenGoods');
 					}
 				} catch (e) {
@@ -68,7 +70,7 @@
 		height: 482px;
 		width: 786px;
 		background-color: #fff;
-		margin: 10px;
+		// margin: 10px;
 		
 		.goods {
 			display: flex;
