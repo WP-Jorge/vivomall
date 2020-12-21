@@ -17,7 +17,7 @@
 				let orderList = JSON.parse(localStorage.getItem('orderList'))
 				let price = 0.00
 				orderList.forEach(item => {
-					price += item.price
+					price += item.price * item.num - item.discount * item.num
 				})
 				return price.toFixed(2)
 			}
