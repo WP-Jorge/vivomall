@@ -1,6 +1,7 @@
 <template>
 	<div class="goods_des_des">
-		<el-image :src="des.desImg" fit="contain" lazy></el-image>
+		<el-image :src="des.desImg" fit="contain"></el-image>
+		<!-- <img :src="des.desImg"> -->
 	</div>
 </template>
 
@@ -13,13 +14,12 @@
 		data() {
 			return {
 				goodsId: this.$route.query.goodsId,
-				des: ''
+				des: {
+					desImg: ''
+				}
 			}
 		},
 		mounted() {
-			this.getDesImgByGoodsId()
-		},
-		beforeRouteUpdate() {
 			this.getDesImgByGoodsId()
 		},
 		methods: {

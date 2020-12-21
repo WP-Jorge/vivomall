@@ -34,7 +34,9 @@
 			return {
 				goods: [],
 				title: '精品手机',
-				firstGoods: {}
+				firstGoods: {
+					firstGoodsImg: ''
+				}
 			}
 		},
 		mounted() {
