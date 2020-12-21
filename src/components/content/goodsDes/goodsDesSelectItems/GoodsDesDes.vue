@@ -13,7 +13,7 @@
 		data() {
 			return {
 				goodsId: this.$route.query.goodsId,
-				des: ''
+				des: 'https://shopstatic.vivo.com.cn/vivoshop/commodity/20201204/20201204171317438615_original.jpg.webp'
 			}
 		},
 		mounted() {
