@@ -1,6 +1,6 @@
 <template>
 	<div class="goods_des_des">
-		<el-image :src="des.desImg" fit="contain"></el-image>
+		<el-image :src="des.desImg" fit="contain" lazy></el-image>
 	</div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
 	<div class="goods_des_imgs">
-		<el-image v-for="(img, index) in imgList" :src="img.desImg" fit="contain" :key="index"></el-image>
+		<el-image v-for="(img, index) in imgList" :src="img.desImg" fit="contain" :key="index" lazy></el-image>
 	</div>
 </template>
 

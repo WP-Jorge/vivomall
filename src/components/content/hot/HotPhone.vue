@@ -6,7 +6,7 @@
 		<div class="hot_phone_container">
 			<el-card class="first_goods" shadow="hover" :lazy="true">
 				<router-link :to="{path: '/goodsDes', query: {goodsId: firstGoods.goodsId}}">
-					<el-image :src="firstGoods.firstGoodsImg" alt="图片" />
+					<el-image :src="firstGoods.firstGoodsImg" alt="图片" lazy />
 				</router-link>
 			</el-card>
 			<div class="hot_phone_goods" v-for="phone in goods" :key="phone.goodsId">
