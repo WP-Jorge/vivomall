@@ -42,7 +42,6 @@
 			login() {
 				if (this.loginCheck()) {
 					login(this.user).then(res => {
-						console.log(res);
 						if (res && res.status === 200 && res.data.status === 1) {
 							this.$message({
 								message: res.data.msg + '正在为您跳转至首页！',
