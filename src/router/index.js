@@ -89,7 +89,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	// console.log(from)
 	if ((to.path === '/order' && (from.path !== '/shoppingCart') && (from.query.status)) || (to.path === '/pay' && from.path !== '/order') || (to
 			.path === '/finished' && from.path !== '/pay')) {
 		alert('您无权访问该页面！')
