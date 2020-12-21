@@ -19,6 +19,9 @@
 		mounted() {
 			this.getDesImgByGoodsId()
 		},
+		beforeRouteUpdate() {
+			this.getDesImgByGoodsId()
+		},
 		methods: {
 			getDesImgByGoodsId() {
 				getDesImgByGoodsId(this.goodsId).then(res => {
