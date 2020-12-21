@@ -22,7 +22,7 @@
 				goodsId: -1
 			}
 		},
-		beforeMount() {
+		created() {
 			this.goodsId = parseInt(this.$route.query.goodsId)
 		}
 	}
