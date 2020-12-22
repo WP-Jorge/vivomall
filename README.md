@@ -1,24 +1,46 @@
 # vivomail
 
-## Project setup
+## 项目启动部署详情
+
+###方法一
+
+####1、直接进入下方网站
 ```
-npm install
+<!-- 通知我打开内网穿透，便可直接访问页面（由于内网穿透免费，所以传输效率不能保证，页面请求可能卡顿）
+	在校期间基本上我都开着内网穿透，如果页面访问不了估计是我电脑关机了，可以来跟我说一下
+-->
+http://wp-jorge.gitee.io/vivomall
 ```
 
-### Compiles and hot-reloads for development
+###方法二
+
+####后端
+#####java版本
+```
+jdk1.8
+```
+#####MySql版本
+```
+MySql7.0+
+```
+
+#####1、导入vivomall.sql到mysql数据库中
+#####2、确保数据库用户名密码为
+```
+username: root
+password: 111111
+```
+#####3、使用命令行运行
+```
+java -jar vivomall-0.0.1-SNAPSHOT.jar
+```
+
+####前端
+#####1、安装模块
+```
+npm i
+```
+#####2、运行项目
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
