@@ -37,6 +37,7 @@
 		min-height: 600px;
 
 		.el-image {
+			display: block;
 			min-width: 1200px;
 		}
 	}

@@ -31,6 +31,9 @@
 <style lang="scss" scoped>
 	.goods_des_imgs {
 		min-height: 600px;
-		min-width: 1200px;
+
+		.el-image {
+			display: block;
+		}
 	}
 </style>
