@@ -15,6 +15,7 @@ http://wp-jorge.gitee.io/vivomall
 ###方法二
 
 ####后端
+
 #####java版本
 ```
 jdk1.8
@@ -25,21 +26,30 @@ MySql7.0+
 ```
 
 #####1、导入vivomall.sql到mysql数据库中
+
 #####2、确保数据库用户名密码为
 ```
 username: root
 password: 111111
 ```
+
 #####3、使用命令行运行
 ```
 java -jar vivomall-0.0.1-SNAPSHOT.jar
 ```
 
 ####前端
+
+#####版本
+```
+vue/cli@4.0+
+```
+
 #####1、安装模块
 ```
 npm i
 ```
+
 #####2、运行项目
 ```
 npm run serve
