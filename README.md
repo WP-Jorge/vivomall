@@ -25,7 +25,7 @@ jdk1.8
 MySql7.0+
 ```
 
-#####1、导入vivomall.sql到mysql数据库中
+#####1、从backend目录中导入vivomall.sql到mysql数据库中
 
 #####2、确保数据库用户名密码为
 ```
@@ -33,7 +33,7 @@ username: root
 password: 111111
 ```
 
-#####3、使用命令行运行
+#####3、使用命令行运行backend目录中的.jar文件
 ```
 java -jar vivomall-0.0.1-SNAPSHOT.jar
 ```
