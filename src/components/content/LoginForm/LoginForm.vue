@@ -49,7 +49,6 @@
 								type: 'success'
 							});
 							this.$store.commit('setUser', this.user)
-							console.log();
 							this.addShoppingCart()
 							this.$router.push('/home').catch(err => err)
 						} else {
