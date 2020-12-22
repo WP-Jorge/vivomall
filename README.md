@@ -54,3 +54,15 @@ npm i
 ```
 npm run serve
 ```
+
+###源码地址
+
+####github
+```
+https://github.com/WP-Jorge/vivomall.git
+```
+
+####gitee
+```
+https://gitee.com/WP-Jorge/vivomall.git
+```
