@@ -22,7 +22,7 @@ jdk1.8
 ```
 #####MySql版本
 ```
-MySql7.0+
+MySql8.0+
 ```
 
 #####1、从backend目录中导入vivomall.sql到mysql数据库中
