@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vivomall.dao.GoodsDao">
+    <select id="getAllGoods" resultType="Goods">
+        select * from goods
+    </select>
+
+    <select id="getGoodsBySortId" resultType="Goods">
+        select * from goods where sort_id = #{sort_id}
+    </select>
+
+    <select id="getGoodsByGoodsIds" resultType="Goods">
+        select * from goods, recommend where goods.goods_id = recommend.goods_id
+    </select>
+
+    <select id="getHotPhone" resultType="Goods">
+        select * from goods, promotional_phone where goods.goods_id = promotional_phone.goods_id
+    </select>
+
+    <select id="getFrstGoods" resultType="Goods">
+        select * from goods, first_goods where goods.goods_id = first_goods.goods_id
+    </select>
+
+    <select id="getHotAccessory" resultType="Goods">
+        select * from goods, promotional_accessories where goods.goods_id = promotional_accessories.goods_id
+    </select>
+
+    <select id="getGoodsByPath" resultType="Goods">
+        select * from goods, path where goods.sort_id = path.sort_id and path_name = #{pathName}
+    </select>
+
+    <select id="getGoodsBySearch" resultType="Goods">
+        select * from goods
+        <where>
+            <if test="keyword != null">
+                goods_name like concat('%', #{keyword, jdbcType=VARCHAR}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getGoodsByGoodsId" resultType="Goods">
+        select * from goods where goods_id = #{goodsId}
+    </select>
+
+</mapper>

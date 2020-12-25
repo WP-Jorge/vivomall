@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vivomall.dao.CommentDao">
+    <select id="getCommentByGoodsId" resultType="Comment" resultMap="commentImgs">
+        select * from comment where goods_id = #{goodsId}
+    </select>
+    <resultMap id="commentImgs" type="Comment">
+        <result property="commentId" column="comment_id"></result>
+        <collection property="commentImgList" javaType="ArrayList" ofType="CommentImg" select="getCommentImgByCommentId" column="comment_id"/>
+    </resultMap>
+    <select id="getCommentImgByCommentId" resultType="CommentImg">
+        select * from comment_img where comment_img.comment_id = #{comment_id}
+    </select>
+</mapper>

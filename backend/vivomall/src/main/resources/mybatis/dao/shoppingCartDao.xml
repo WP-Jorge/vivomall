@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vivomall.dao.ShoppingCartDao">
+    <insert id="addShoppingCart" parameterType="ShoppingCart">
+        insert into shopping_cart values (null, #{username}, #{price}, #{color}, #{version}, #{num}, #{discount}, #{img}, #{totalName}, #{goodsId})
+    </insert>
+
+    <select id="getShoppingCartByGoodsName" resultType="int">
+        select count(total_name) from shopping_cart where total_name = #{totalName} and username = #{username}
+    </select>
+
+    <update id="updateShoppingCartNumByGoodsName">
+        update shopping_cart set num = num + 1 where total_name = #{totalName}
+    </update>
+
+    <select id="getShoppingCartByUsername" resultType="ShoppingCart">
+        select * from shopping_cart where username = #{username}
+    </select>
+
+    <update id="updateShoppingCartNumByGoodsNameAndUsername">
+        update shopping_cart set num = #{num} where total_name = #{totalName} and username = #{username}
+    </update>
+
+    <delete id="deleteShoppingCartByGoodsNameAndUsername">
+        delete from shopping_cart where username = #{username} and total_name = #{totalName}
+    </delete>
+</mapper>

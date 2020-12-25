@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vivomall.dao.VersionDao">
+    <select id="getVersionByGoodsId" resultType="Version">
+        select * from version, version_t where version.version_id = version_t.version_id and goods_id = #{goodsId}
+    </select>
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vivomall.dao.ColorDao">
+    <select id="getColorByGoodsId" resultType="Color">
+        select * from color, color_t where color.color_id = color_t.color_id and goods_id = #{goodsId}
+    </select>
+</mapper>

@@ -24,6 +24,46 @@ jdk1.8
 ```
 MySql8.0+
 ```
+#####1、从backend目录中导入vivomall.sql到mysql数据库中
+
+#####2、从backend目录中导入vivomall到idea中
+
+#####3、运行maven，导入相关依赖
+
+#####4、修改application.properties中的数据库用户名和密码
+
+#####5、运行项目
+
+####前端
+
+#####版本
+```
+vue/cli@4.0+
+```
+
+#####1、安装依赖
+```
+npm i
+```
+
+#####2、运行项目
+```
+npm run serve
+```
+
+###方法三
+
+####后端
+
+#####java版本
+```
+jdk1.8
+```
+#####MySql版本
+```
+MySql8.0+
+```
+
 
 #####1、从backend目录中导入vivomall.sql到mysql数据库中
 
@@ -45,7 +85,7 @@ java -jar vivomall-0.0.1-SNAPSHOT.jar
 vue/cli@4.0+
 ```
 
-#####1、安装模块
+#####1、安装依赖
 ```
 npm i
 ```
