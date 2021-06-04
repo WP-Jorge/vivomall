@@ -29,86 +29,85 @@
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				texts: ['品牌', 'OriginOS', '体验店', '企业业务', '社区']
-			}
-		},
-		methods: {
-			logout() {
-				this.$store.commit('delUser');
-				this.$message({
-					message: '您已退出登录！',
-					type: 'warning',
-					center: true
-				});
-				localStorage.clear()
-				if (this.$route.path === '/shoppingCart') {
-					location.reload()
-				}
-			}
-		},
-		computed: {
-			username() {
-				return this.$store.state.user ? this.$store.state.user.username : null
+export default {
+	data() {
+		return {
+			texts: ['品牌', 'OriginOS', '体验店', '企业业务', '社区']
+		}
+	},
+	methods: {
+		logout() {
+			this.$store.commit('delUser');
+			this.$message({
+				message: '您已退出登录！',
+				type: 'warning',
+				center: true
+			});
+			localStorage.clear()
+			if (this.$route.path === '/shoppingCart') {
+				location.reload()
 			}
 		}
+	},
+	computed: {
+		username() {
+			return this.$store.state.user ? this.$store.state.user.username : null
+		}
 	}
+}
 </script>
 
 <style lang="scss" scoped>
-	@import 'assets/sass/base.scss';
+@import 'assets/sass/base.scss';
 
-	a {
-		color: $gray_color;
+a {
+	color: $gray_color;
+}
+
+.header {
+	height: 40px;
+	min-width: 1200px;
+	font-size: 12px;
+	text-align: center;
+	color: $gray_color;
+	background-color: $black_color;
+
+	.left_text {
+		display: flex;
+		line-height: 40px;
+
+		.el-col:nth-child(1) {
+			padding-left: 80px;
+		}
 	}
 
-	.header {
+	.center_text {
 		height: 40px;
-		min-width: 1200px;
-		font-size: 12px;
-		text-align: center;
-		color: $gray_color;
-		background-color: $black_color;
-
-		.left_text {
-			display: flex;
-			line-height: 40px;
-
-			.el-col:nth-child(1) {
-				padding-left: 80px;
-			}
-		}
-
-		.center_text {
-			height: 40px;
-		}
-
-		.right_text {
-			display: flex;
-			line-height: 40px;
-
-			.car {
-				flex: 1;
-				text-align: right;
-				padding-right: 10px;
-			}
-
-			.no_login,
-			.login {
-				display: flex;
-				flex: 2;
-
-				.welcom {
-					min-width: 100px;
-				}
-			}
-		}
-
-		.right_text:last-child {
-			padding-right: 80px;
-		}
-
 	}
+
+	.right_text {
+		display: flex;
+		line-height: 40px;
+
+		.car {
+			flex: 1;
+			text-align: right;
+			padding-right: 10px;
+		}
+
+		.no_login,
+		.login {
+			display: flex;
+			flex: 2;
+
+			.welcom {
+				min-width: 100px;
+			}
+		}
+	}
+
+	.right_text:last-child {
+		padding-right: 80px;
+	}
+}
 </style>
