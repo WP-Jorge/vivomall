@@ -5,8 +5,10 @@
 	padding: 0;
 }
 
-body, html {
+body,
+html {
 	height: 100%;
+	width: 100%;
 	background-color: $base_bgc;
 }
 
@@ -20,11 +22,11 @@ li {
 }
 
 .v-enter,
-.v-leave-to{
+.v-leave-to {
 	opacity: 0;
 }
-			
+
 .v-enter-active,
-.v-leave-active{
+.v-leave-active {
 	transition: all 0.1s ease;
 }
